@@ -1,4 +1,6 @@
 foo
-fubar
+hello world
+Hello world
 related-links
 postreq
+searchtitle
