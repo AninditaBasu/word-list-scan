@@ -1,3 +1,4 @@
 foo
 fubar
-<related-links
+related-links
+postreq
