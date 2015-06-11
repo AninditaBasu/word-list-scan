@@ -35,11 +35,13 @@ fwordlist = open(fname)
 for word in fwordlist:
     word = word.rstrip()
     wordlist.append(word)
+    reportfile.write('"')
     reportfile.write(word)
-    reportfile.write(", ")
+    reportfile.write('", ')
     print word
 fwordlist.close()
-reportfile.write("...end...</p>")
+reportfile.write(".END-OF-LIST</p>")
+print wordlist #checking
 #
 # Count the number of words in the list and print it out.
 #
@@ -84,26 +86,32 @@ print '\nThe program will scan ', counter, 'folders in the', workspace, 'directo
 # For each word in the list, open the file, search for occurrence, add to wordcounter if found,
 # print the filename only if searched word exists in the file, and then close the file.
 #
-counter = 0
+counter = 0  # to count the number of files in all of the subfolders.
+filelist = []
 for (dirname, dirs, files) in os.walk(workspace):
     for filename in files:
         if filename.endswith('.dita'):
             counter = counter + 1
-            # print filename
             thefile = os.path.join(dirname, filename)
-            for word in wordlist:
-                handle = open(thefile)
-                for line in handle:
-                    line = line.rstrip()
-                    if re.findall(word, line):
-                        print word, 'occurs', "in", thefile
-                        reportfile.write("<p>")
-                        reportfile.write(' <span style="color: red">')
-                        reportfile.write(word)
-                        reportfile.write("</span> occurs in ")
-                        reportfile.write(thefile)
-                        reportfile.write(".</p>")
-                handle.close()
+            filelist.append(thefile)
+#
+#
+for word in wordlist:
+    print word
+    reportfile.write("<p>")
+    reportfile.write(word)
+    reportfile.write(" occurs in:</p>")
+    reportfile.write("<ul>")
+    for thefile in filelist:
+        handle = open(thefile)
+        filecontents = handle.read()
+        if word in filecontents:
+            print word, 'occurs in', thefile
+            reportfile.write("<li>")
+            reportfile.write(thefile)
+            reportfile.write("</li>")
+        handle.close()
+    reportfile.write("</ul><hr/>")
 print '\nFinished checking', counter, 'DITA files.\n'
 #
 # print a completion message
@@ -113,7 +121,6 @@ print '==============finished printing word occurrences==============\n'
 #
 # Write the closing HTML tags in the report file.
 #
-reportfile.write("<hr/>")
 reportfile.write("</body>")
 reportfile.write("</html>")
 reportfile.close()
