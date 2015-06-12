@@ -29,24 +29,29 @@ wordlist = []
 #
 print ("\n")
 print 'Reading the word list ...\n'
-reportfile.write("<p>Words and phrases searched for: ")
+reportfile.write("<p>Words and phrases searched for:</p>")
+reportfile.write("<ul>")
 #
 fwordlist = open(fname)
 for word in fwordlist:
     word = word.rstrip()
     wordlist.append(word)
-    reportfile.write('"')
+    reportfile.write('<li>')
     reportfile.write(word)
-    reportfile.write('", ')
+    reportfile.write('</li>')
     print word
 fwordlist.close()
-reportfile.write(".END-OF-LIST</p>")
+reportfile.write("</ul>")
 print wordlist #checking
 #
-# Count the number of words in the list and print it out.
+# Count the number of words in the list and display the count.
 #
 x = len(wordlist)
 print '\nNo. of words and phrases to search for: ', x
+reportfile.write("<p>Number of search terms: ")
+a = str(x)
+reportfile.write(a)
+reportfile.write("</p>")
 #
 # Get the directory that contains the DITA files.
 # Print it to the report file.
@@ -95,11 +100,11 @@ for (dirname, dirs, files) in os.walk(workspace):
             thefile = os.path.join(dirname, filename)
             filelist.append(thefile)
 #
-#
 for word in wordlist:
     print word
-    reportfile.write("<p>")
+    reportfile.write('<p><span style="color:red">')
     reportfile.write(word)
+    reportfile.write("</span>")
     reportfile.write(" occurs in:</p>")
     reportfile.write("<ul>")
     for thefile in filelist:
@@ -113,6 +118,10 @@ for word in wordlist:
         handle.close()
     reportfile.write("</ul><hr/>")
 print '\nFinished checking', counter, 'DITA files.\n'
+reportfile.write("<p>Finished checking ")
+a = str(counter)
+reportfile.write(a)
+reportfile.write(" DITA files.</p>")
 #
 # print a completion message
 #
