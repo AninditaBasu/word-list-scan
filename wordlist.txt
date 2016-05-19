@@ -1,6 +1,6 @@
-foo
 hello world
 Hello world
 related-links
-postreq
-searchtitle
+<postreq>
+legacy
+HTTP
