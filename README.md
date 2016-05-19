@@ -2,23 +2,21 @@
 
 A script that scans all DITA files in a directory for occurrences of an entire list of words and phrases. Markup tags are also reckoned as words.
 
-## Usage instructions
+## Prerequisite
 
-#### Prerequisite
+Download and install Python 2.7.5. Later versions of Python should also work.
 
-Download and install Python 2.7.5. Later versions of Python should work.
+## Steps
 
-#### Steps
-
-1. Download this entire repository as a `.zip` file and extract the contents to any folder.
-2. Open the `wordlist.txt` file in a notepad, and enter the words and phrases to be searched for. Each word or phrase should be on a new line. Do not enter a new line after the last item in this file. Save and close the file.
-3. Double-click `wordListScan.py`. When prompted, enter the full path of the directory to be scanned, for example, `c:\documentation\`. Do not forget to enter the trailing `\` for the directory.
+1. Download this repository as a `.zip` file and extract the contents to any directory.
+2. Open the `wordlist.txt` file in a notepad. It contains some example words. Delete them, and enter the words and phrases to be searched for. Each word or phrase should be on a new line. Do not enter a new line after the last item in this file. Save the file and close it.
+3. Double-click `wordListScan.py`. When prompted, enter the full path of the directory to be scanned, for example, `c:\documentation\myProduct\`. Do not forget to enter the trailing `\` for the directory. The script will scan all of the subfolders of the specified directory.
 4. When the checking is complete, you see a message on the console: `Press any key to exit.` Press any key.
-5. Go to the folder where the script resides. You see a file called `wordListScan.html`. This is the report file for you to read and act upon.
+5. Go to the directory where the script resides. You see a file called `wordListScan.html`. This is the report file for you to read and act upon.
  
 ## Limitations
 
-The script assumes that all DITA topic files have the `.dita` extension. If your files use the `.xml` extension, this script will not work.
+It is assumed that all DITA topic files have the `.dita` extension. If your files use the `.xml` extension, this script will not work in its present form.
 
 ## Bugs and enhancements
 
