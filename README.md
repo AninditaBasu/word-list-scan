@@ -1,10 +1,16 @@
+![license: GPL 3.0](https://img.shields.io/badge/license-GPL%203.0-lightgrey.svg)  ![python 3.7](https://img.shields.io/badge/python-3.7.0-blue.svg)
+
 # word-list-scan
 
-A script that scans all DITA files in a directory for occurrences of an entire list of words and phrases. Markup tags are also reckoned as words.
+A script that scans all DITA files in a directory for occurrences of an entire list of words and phrases. Markup tags (without the angle brackets) are also reckoned as words.
+ 
+## Limitations
+
+It is assumed that all DITA topic files have the `.dita` extension. If your files use the `.xml` extension, this script will not work in its present form.
 
 ## Prerequisite
 
-Download and install Python 2.7.5. Later versions of Python should also work.
+Download and install Python 3.7.
 
 ## Steps
 
@@ -13,10 +19,6 @@ Download and install Python 2.7.5. Later versions of Python should also work.
 3. Double-click `wordListScan.py`. When prompted, enter the full path of the directory to be scanned, for example, `c:\documentation\myProduct\`. Do not forget to enter the trailing `\` for the directory. The script will scan all of the subfolders of the specified directory.
 4. When the checking is complete, you see a message on the console: `Press any key to exit.` Press any key.
 5. Go to the directory where the script resides. You see a file called `wordListScan.html`. This is the report file for you to read and act upon.
- 
-## Limitations
-
-It is assumed that all DITA topic files have the `.dita` extension. If your files use the `.xml` extension, this script will not work in its present form.
 
 ## Bugs and enhancements
 
