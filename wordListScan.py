@@ -43,26 +43,26 @@ wordlist = []
 # Define a list to write the list of words in the wordlist.txt file to.
 #
 print ("\n")
-print 'Reading the word list ...\n'
+print ('Reading the word list ...\n')
 reportfile.write("<p>Words and phrases searched for:</p>")
 reportfile.write("<ul>")
 #
-fwordlist = open(fname)
+fwordlist = open(fname, 'r')
 for word in fwordlist:
     word = word.rstrip()
     wordlist.append(word)
     reportfile.write('<li>')
     reportfile.write(word)
     reportfile.write('</li>')
-    print word
+    print (word)
 fwordlist.close()
 reportfile.write("</ul>")
-print wordlist #checking
+print (wordlist) #checking
 #
 # Count the number of words in the list and display the count.
 #
 x = len(wordlist)
-print '\nNo. of words and phrases to search for: ', x
+print ('\nNo. of words and phrases to search for: ', x)
 reportfile.write("<p>Number of search terms: ")
 a = str(x)
 reportfile.write(a)
@@ -71,10 +71,10 @@ reportfile.write("</p>")
 # Get the directory that contains the DITA files.
 # Print it to the report file.
 #
-print "\nSpecify the full path of the directory to be scanned, for example, C:\jazz_repo\prodA\\\n"
-print "Do not forget the trailing slash\n"
+print ("\nSpecify the full path of the directory to be scanned, for example, C:\jazz_repo\prodA\\\n")
+print ("Do not forget the trailing slash\n")
 #
-workspace = raw_input("Enter the full path of directory to be scanned: ")
+workspace = input("Enter the full path of directory to be scanned: ")
 #
 reportfile.write('<p>Directory scanned: <a href = "file:///')
 reportfile.write(workspace)
@@ -89,16 +89,16 @@ counter = 0
 #
 # Print out the subfolders. Also, count them and print out the count.
 #
-print '\nReading the directory ...\n'
+print ('\nReading the directory ...\n')
 #
 try:
     for foldername in os.listdir(workspace):
         counter += 1
-        print foldername
+        print (foldername)
 except:
-    print 'The directory could not be found.\n'
+    print ('The directory could not be found.\n')
     exit()
-print '\nThe program will scan ', counter, 'folders in the', workspace, 'directory.\n'
+print ('\nThe program will scan ', counter, 'folders in the', workspace, 'directory.\n')
 #
 # Start a counter for the number of dita files in the directory
 #
@@ -116,23 +116,23 @@ for (dirname, dirs, files) in os.walk(workspace):
             filelist.append(thefile)
 #
 for word in wordlist:
-    print word
+    print (word)
     reportfile.write('<p><span style="color:red">')
     reportfile.write(word)
     reportfile.write("</span>")
     reportfile.write(" occurs in:</p>")
     reportfile.write("<ul>")
     for thefile in filelist:
-        handle = open(thefile)
+        handle = open(thefile, 'r', encoding='ISO-8859-2')
         filecontents = handle.read()
         if word in filecontents:
-            print word, 'occurs in', thefile
+            print (word, 'occurs in', thefile)
             reportfile.write("<li>")
             reportfile.write(thefile)
             reportfile.write("</li>")
         handle.close()
     reportfile.write("</ul><hr/>")
-print '\nFinished checking', counter, 'DITA files.\n'
+print ('\nFinished checking', counter, 'DITA files.\n')
 reportfile.write("<p>Finished checking ")
 a = str(counter)
 reportfile.write(a)
@@ -140,7 +140,7 @@ reportfile.write(" DITA files.</p>")
 #
 # print a completion message
 #
-print '==============finished printing word occurrences==============\n'
+print ('==============finished printing word occurrences==============\n')
 #
 #
 # Write the closing HTML tags in the report file.
@@ -152,6 +152,6 @@ reportfile.close()
 # Wait for user input so that a person gets enough time to read whatever's been printed on the console
 # and then close the program
 #
-print "The program will now end."
-raw_input("Press any key to close.")
+print ("The program will now end.")
+input("Press any key to close.")
 exit()
