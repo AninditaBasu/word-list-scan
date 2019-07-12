@@ -14,6 +14,10 @@ It is assumed that all DITA topic files have the `.dita` extension. If your file
 
 Use GitHub's issue tracking feature.
 
+## Acknowledgments
+
+The code was converted from .py to .exe through [-py-to-exe](https://github.com/brentvollebregt/auto-py-to-exe).
+
 ## Licensing
 
 The script is under [GPL 3](https://opensource.org/licenses/GPL-3.0), which is a copyleft licence. You are free to use and distribute this code as-is. You are also free to modify and distribute this code provided you distribute such modified code in its entirety under the same licence as this one, that is GPL 3.
