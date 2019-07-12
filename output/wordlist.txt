@@ -1,6 +1,6 @@
 hello world
 Hello world
 related-links
-<postreq>
+postreq
 legacy
 HTTP
